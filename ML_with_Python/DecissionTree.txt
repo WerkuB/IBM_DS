@@ -1,0 +1,19 @@
+###Decision Tree###
+import piplite
+await piplite.install(['pandas'])
+await piplite.install(['matplotlib'])
+await piplite.install(['numpy'])
+await piplite.install(['scikit-learn'])
+
+import numpy as np 
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+import sklearn.tree as tree
+
+from pyodide.http import pyfetch
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
